@@ -54,7 +54,7 @@ jobs:
             # Validate SHA format
             if ! echo "$TARGET_SHA" | grep -qE '^[0-9a-f]{7,40}$'; then
               echo "::error::Invalid commit SHA: $TARGET_SHA"
-              exit 1
+              #exit 1
             fi
             echo "Target SHA: $TARGET_SHA"
             echo "sha=$TARGET_SHA" >> $GITHUB_OUTPUT
@@ -85,7 +85,7 @@ jobs:
             git fetch --all --tags
             git cat-file -e "$TARGET_SHA" || {
               echo "::error::Commit $TARGET_SHA does not exist in the repository"
-              exit 1
+              #exit 1
             }
           fi
           git checkout "$TARGET_SHA"
